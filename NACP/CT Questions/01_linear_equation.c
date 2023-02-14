@@ -30,7 +30,7 @@ if ((a1 * b2) - (b1 * a2) == 0){
 else{
     res_x = ((c1*b2) - (b1*c2))/((a1*b2)-(b1*a2));
     res_y = ((a1*c2) - (c1*a2)) / ((a1*b2) - (b1*a2));;
-    printf("x = %f and y = %f",res_x,res_y);
+    printf("x = %.3f and y = %.3f",res_x,res_y);
 }
 
     return 0;

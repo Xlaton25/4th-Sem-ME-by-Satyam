@@ -125,3 +125,10 @@ int main() {
 
     return 0;
 }
+
+/******************TEST CASE*********************
+Enter a date (DD/MM/YYYY): 25/12/2002
+The day of the entered date is: Wednesday
+Enter number of days to add/subtract: -5
+The date after adding/subtracting -5 days is: 20/12/2002
+*****************************************************/

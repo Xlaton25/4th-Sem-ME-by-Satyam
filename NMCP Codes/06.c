@@ -8,13 +8,13 @@
 
 int main()
 {
-    double x0 = 2, x1;
+    double x0 = 2, x1, e=0.001;
     int step = 1;
     printf("\nStep\t\tx0\t\tf(x0)\t\tx1\t\tf(x1)\n");
     do
     {
         x1 = x0 - (f(x0) / df(x0));
-        if(fabs((x1 - x0) / x1) < 0.0001) //for correct to three decimal places
+        if(fabs((x1 - x0) / x1) < e) //for correct to three decimal places
         {
             break; 
         }

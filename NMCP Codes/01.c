@@ -55,9 +55,8 @@
 
 #include <stdio.h>
 #include <math.h>
-
 #define e 2.71828
-#define TOLERANCE 0.0001
+#define T 0.0001
 
 double f(double x) {
     return   cos(x) - x * pow(x, e);
@@ -84,7 +83,7 @@ int main() {
         }
         
         i++;
-    } while (fabs(x1 - x0) > TOLERANCE && i < 100);
+    } while (fabs(x1 - x0) > T && i < 100);
     
     printf("The root of x^e = cos(x) in the interval (0, 1) is: %0.4lf", x2);
     

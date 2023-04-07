@@ -1,43 +1,43 @@
-//Find the root of the equation x^e = cos x in the interval (0, 1) using Regular-Falsi method correct to four decimal places. Write its computer programme in 'C' language.
+//Find the root of the equation xe^x = cos x in the interval (0, 1) using Regular-Falsi method correct to four decimal places. Write its computer programme in 'C' language.
 
-#include <stdio.h>
-#include <math.h>
+// #include <stdio.h>
+// #include <math.h>
 
-#define MAX_ITER 100 // Maximum number of iterations
-#define EPSILON 0.0001 // Error tolerance
+// #define MAX_ITER 100 // Maximum number of iterations
+// #define EPSILON 0.0001 // Error tolerance
 
-double f(double x, double e) {
-    return pow(x,e) - cos(x);
-}
+// double f(double x, double e) {
+//     return pow(x,e) - cos(x);
+// }
 
-int main() {
-    double a = 0, b = 1, c, fa, fb, fc;
-    int iter = 0;
+// int main() {
+//     double a = 0, b = 1, c, fa, fb, fc;
+//     int iter = 0;
 
-    do {
-        fa = f(a,1.5);
-        fb = f(b,1.5);
+//     do {
+//         fa = f(a,1.5);
+//         fb = f(b,1.5);
 
-        c = a - ((fa*(b-a))/(fb-fa));
-        fc = f(c,1.5);
+//         c = a - ((fa*(b-a))/(fb-fa));
+//         fc = f(c,1.5);
 
-        if (fa * fc < 0) {
-            b = c;
-        } else {
-            a = c;
-        }
+//         if (fa * fc < 0) {
+//             b = c;
+//         } else {
+//             a = c;
+//         }
 
-        iter++;
-    } while (fabs(fc) > EPSILON && iter < MAX_ITER);
+//         iter++;
+//     } while (fabs(fc) > EPSILON && iter < MAX_ITER);
 
-    if (iter == MAX_ITER) {
-        printf("Failed to find root within %d iterations\n", MAX_ITER);
-    } else {
-        printf("Root: %.4f\n", c);
-    }
+//     if (iter == MAX_ITER) {
+//         printf("Failed to find root within %d iterations\n", MAX_ITER);
+//     } else {
+//         printf("Root: %.4f\n", c);
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 /*
@@ -50,3 +50,43 @@ int main() {
         If f(c) has the same sign as f(a), then set a = c, else set b = c.
         If the maximum number of iterations is reached and a root has not been found, then print an error message.
 */
+
+
+
+#include <stdio.h>
+#include <math.h>
+
+#define e 2.71828
+#define TOLERANCE 0.0001
+
+double f(double x) {
+    return   cos(x) - x * pow(x, e);
+}
+
+int main() {
+    double x0 = 0, x1 = 1, x2, f0, f1, f2;
+    int i = 0;
+    
+    do {
+        f0 = f(x0);
+        f1 = f(x1);
+        x2 = x1 - (f1 * (x1 - x0)) / (f1 - f0);
+        f2 = f(x2);
+        
+        if (f2 == 0) {
+            break;
+        }
+        
+        if (f0 * f2 < 0) {
+            x1 = x2;
+        } else {
+            x0 = x2;
+        }
+        
+        i++;
+    } while (fabs(x1 - x0) > TOLERANCE && i < 100);
+    
+    printf("The root of x^e = cos(x) in the interval (0, 1) is: %0.4lf", x2);
+    
+    return 0;
+}

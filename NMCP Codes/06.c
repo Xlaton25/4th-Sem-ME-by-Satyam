@@ -8,7 +8,7 @@
 
 int main()
 {
-    double x0 = 2, x1, e=0.001;
+    double x0 = 2, x1, e=0.0001;
     int step = 1;
     printf("\nStep\t\tx0\t\tf(x0)\t\tx1\t\tf(x1)\n");
     do

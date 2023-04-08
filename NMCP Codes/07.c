@@ -4,29 +4,43 @@
 #include <stdio.h>
 #include <math.h>
 
-double function(double x) {
-    return (2*x - log(x) - 7);
-}
+// double f(double x) {
+//     return (2*x - log10(x) - 7);
+// }
 
-double derivative(double x) {
-    return (2 + 1/x);
-}
+// double df(double x) {
+//     return (2 + 1/x);
+// }
+#define f(x) (2*x - log10(x) - 7)
+#define df(x) (2 + 1/x)
 
 int main() {
-    double x0, x1, error;
-    int i = 0;
+    double x0, x1, error = 0.0001;
+    int i = 0,step = 1;
 
     printf("Enter an initial guess: ");
     scanf("%lf", &x0);
-
+    printf("\nStep\t\tx0\t\tf(x0)\t\tx1\t\tf(x1)\n");
     do {
-        x1 = x0 - function(x0)/derivative(x0);
-        error = fabs((x1 - x0)/x1);
+        // x1 = x0 - f(x0)/df(x0);
+        // error = fabs((x1 - x0)/x1);
+        // printf("%d\t\t%f\t%f\t%f\t%f\n",step,x0,f(x0),x1,df(x0));
+        // x0 = x1;
+        // i++;
+        // step++;
+
+        x1 = x0 - (f(x0) / df(x0));
+        if(fabs((x1 - x0) / x1) < error) //for correct to three decimal places
+        {
+            break; 
+        }
+        printf("%d\t\t%f\t%f\t%f\t%f\n",step,x0,f(x0),x1,df(x0));
         x0 = x1;
-        i++;
-    } while (error > 0.0001 && i < 100); // stop after 100 iterations or when the error is less than 0.0001
+        step++;
+    } while (1); 
 
     printf("The positive root is approximately %.4lf\n", x1);
     
     return 0;
 }
+

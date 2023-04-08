@@ -22,7 +22,7 @@ int main()
 	 if( f0*f1 > 0.0)
 	 {
 		  printf("Incorrect Initial Guesses.\n");
-		  return;
+		  return 0;
 	 }
 	 /* Implementing Regula Falsi or False Position Method */
 	 printf("\nStep\t\tx0\t\tx1\t\tx2\t\tf(x2)\n");

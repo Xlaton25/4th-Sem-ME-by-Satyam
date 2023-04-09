@@ -12,7 +12,7 @@ Write its computer programme in 'C' language
 int main() {
     float t[11] = {0, 12, 24, 36, 48, 60, 72, 84, 96, 108, 120};
     float v[11] = {0, 3.60, 10.08, 18.90, 21.60, 18.54, 10.26, 5.40, 4.50, 5.40, 9.00};
-    float h = 12;
+    float h = 12; // 12 = 24 - 12
     float sum = 0;
     for (int i = 1; i < 10; i++) {
         if (i % 2 == 0) {
@@ -21,7 +21,7 @@ int main() {
             sum += 4 * v[i];
         }
     }
-    sum = (v[0] + sum + v[10]) * h / 3;
+    sum = (v[0] + sum + v[10]) * h / 3; // Simpson's rule
     printf("Integration of v from 0 to 120: %f\n", sum);
     return 0;
 }

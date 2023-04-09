@@ -9,6 +9,7 @@ double sqrt_newton(double N) {
     int max_iter = 1000;
     double tol = 1e-6;
 
+    printf("\nStep\t\tx0\t\tf(x0)\t\tx1\t\tf(x1)\n");
     for (int i = 0; i < max_iter; i++) {
         fx0 = x0*x0 - N;
         dfx0 = 2*x0;
@@ -18,7 +19,7 @@ double sqrt_newton(double N) {
         if (fabs(x1*x1 - N) < tol) {
             break;
         }
-
+        printf("%d\t\t%f\t%f\t%f\t%f\n",i+1,x0,fx0,x1,dfx0);
         x0 = x1;
     }
 

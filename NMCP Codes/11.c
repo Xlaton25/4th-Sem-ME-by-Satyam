@@ -11,7 +11,7 @@ double sin_interpolate(double x[], double y[], int n, double x0) {
     double y0 = 0.0;
     double u = (x0 - x[0])/(x[1] - x[0]);
 
-    double d[n][n];
+    double d[n][n];  // forward difference table
 
     // calculate forward difference table
     for (int i = 0; i < n; i++) {
@@ -22,6 +22,16 @@ double sin_interpolate(double x[], double y[], int n, double x0) {
         for (int i = 0; i < n-j; i++) {
             d[i][j] = d[i+1][j-1] - d[i][j-1];
         }
+    }
+
+    //print forward difference table
+    printf("Forward Difference Table:\n");
+    for(int i = 0; i < n; i++){
+        printf("%.2lf\t", x[i]);
+        for(int j = 0; j < n-i; j++){
+            printf("%.4lf\t", d[i][j]);
+        }
+        printf("\n");
     }
 
     // interpolate using formula
@@ -45,8 +55,9 @@ int main() {
     double x[] = {45, 50, 55, 60};
     double y[] = {0.7071, 0.7660, 0.8192, 0.8660};
     double x0 = 52.0;
+    // for(int i = 0; i < n; i++){
+    //     printf("%.4lf\t", x[i]);}
     double sin_x0 = sin_interpolate(x, y, n, x0);
-
     printf("sin %.2lf = %.4lf\n", x0, sin_x0);
 
     return 0;

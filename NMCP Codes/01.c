@@ -59,7 +59,7 @@
 #define T 0.0001
 
 double f(double x) {
-    return   cos(x) - x * pow(x, e);
+    return   cos(x) - x * pow(e, x);
 }
 
 int main() {
